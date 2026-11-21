@@ -1,8 +1,9 @@
-/* Sits above the card's full-surface link overlay so the chart tooltip still gets hover.
+/* Sits above the card's full-surface link overlay (z-index 1) and the pulse bar's hover trigger
+   (z-index 2), so the chart tooltip gets hover and is not covered by the bar.
    The fixed height keeps cards aligned while data loads or when a queue has no history. */
 .volume {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
