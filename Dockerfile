@@ -3,7 +3,9 @@
 FROM node:22-alpine AS build
 
 WORKDIR /src
-ENV SKIP_INSTALL_SIMPLE_GIT_HOOKS=1
+# Workspace builds call the root TypeScript binary, which Yarn does not put on their PATH.
+ENV SKIP_INSTALL_SIMPLE_GIT_HOOKS=1 \
+    PATH=/src/node_modules/.bin:$PATH
 COPY . .
 RUN corepack enable \
     && yarn install --immutable \
