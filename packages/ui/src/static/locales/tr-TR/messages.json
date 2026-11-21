@@ -254,6 +254,7 @@
     "HIDE": "Metrikleri gizle",
     "EMPTY": "Henüz metrik verisi bulunmuyor. İşleme hızını görüntülemek için işleyici yapılandırmanızda metrikleri etkinleştirin (ör. metrics: { maxDataPoints: MetricsTime.ONE_WEEK }).",
     "RANGE_60M": "60 dk",
+    "RANGE_24H": "24 sa",
     "RANGE_7D": "7 g",
     "RANGE_30D": "30 g",
     "RANGE_90D": "90 g",

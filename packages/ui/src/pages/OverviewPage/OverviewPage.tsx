@@ -5,6 +5,11 @@ import { OverviewControls } from '../../components/OverviewControls/OverviewCont
 import OverviewDropDownActions from '../../components/OverviewDropDownActions/OverviewDropDownActions';
 import { OverviewTree } from '../../components/OverviewTree/OverviewTree';
 import { QueueCard } from '../../components/QueueCard/QueueCard';
+import {
+  VOLUME_RANGE_LABEL_KEYS,
+  VOLUME_RANGES,
+} from '../../components/QueueCard/QueueVolume/volumeRange';
+import { RangeSelector } from '../../components/RangeSelector/RangeSelector';
 import { StatusLegend } from '../../components/StatusLegend/StatusLegend';
 import { StickyHeader } from '../../components/StickyHeader/StickyHeader';
 import { useElementHeight } from '../../hooks/useElementHeight';
@@ -23,8 +28,11 @@ export const OverviewPage = () => {
   const { actions, queues, loading } = useQueues();
   const query = useSearchParams();
   const { searchTerm } = useQueueSearch();
-  const groupedSetting = useSettingsStore((state) => state.overview.grouped);
-  const groupedDefault = useUIConfig().overview?.groupByDelimiter ?? false;
+  const overviewSettings = useSettingsStore((state) => state.overview);
+  const groupedSetting = overviewSettings.grouped;
+  const { overview: overviewConfig, hasHistoryProvider = false } = useUIConfig();
+  const groupedDefault = overviewConfig?.groupByDelimiter ?? false;
+  const setSettings = useSettingsStore((state) => state.setSettings);
   const sortQueues = useSettingsStore((state) => state.sortQueues);
   const [headerRef, headerHeight] = useElementHeight<HTMLDivElement>();
 
@@ -65,6 +73,16 @@ export const OverviewPage = () => {
         <StatusLegend>
           <div className={s.headerControls}>
             <OverviewControls grouped={grouped} groupPaths={groupPaths} />
+            {hasHistoryProvider && (
+              <RangeSelector
+                ranges={VOLUME_RANGES}
+                value={overviewSettings.volumeRange ?? '60m'}
+                onChange={(range) =>
+                  setSettings({ overview: { ...overviewSettings, volumeRange: range } })
+                }
+                getLabel={(range) => t(VOLUME_RANGE_LABEL_KEYS[range])}
+              />
+            )}
             <OverviewDropDownActions
               actions={actions}
               queues={queues}

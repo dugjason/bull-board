@@ -255,6 +255,7 @@
     "HIDE": "Ocultar métricas",
     "EMPTY": "Aún no se han recopilado métricas. Habilita las métricas en tu worker (ej. metrics: { maxDataPoints: MetricsTime.ONE_WEEK }) para ver el rendimiento.",
     "RANGE_60M": "60m",
+    "RANGE_24H": "24h",
     "RANGE_7D": "7d",
     "RANGE_30D": "30d",
     "RANGE_90D": "90d",

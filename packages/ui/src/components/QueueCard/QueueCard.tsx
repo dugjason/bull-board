@@ -13,6 +13,7 @@ import { RateLimitBadge } from '../RateLimitBadge/RateLimitBadge';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { WorkersBadge } from '../WorkersBadge/WorkersBadge';
 import { QueueStats } from './QueueStats/QueueStats';
+import { QueueVolume } from './QueueVolume/QueueVolume';
 import s from './QueueCard.module.css';
 
 interface IQueueCardProps {
@@ -76,6 +77,7 @@ export const QueueCard = ({ queue, displayName }: IQueueCardProps) => {
           )}
         </div>
       </div>
+      <QueueVolume queueName={queue.name} enabled={inView} />
       <QueueStats queue={queue} />
       <Suspense fallback={null}>
         {modal.isMounted('addJob') && (

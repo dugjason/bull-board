@@ -1,14 +1,13 @@
-FROM --platform=$BUILDPLATFORM node:22-alpine AS deps
+# Fork: builds the CLI from this checkout instead of installing @bull-board/cli from npm, so the
+# image carries the overview volume charts.
+FROM node:22-alpine AS build
 
-ARG BULL_BOARD_VERSION=latest
-ARG TARGETARCH
-
-WORKDIR /opt/bull-board
-RUN npm install --omit=dev --no-audit --no-fund --ignore-scripts \
-      --os=linux --libc=musl --cpu="$([ "$TARGETARCH" = amd64 ] && echo x64 || echo "$TARGETARCH")" \
-      "@bull-board/cli@${BULL_BOARD_VERSION}" \
-    && mkdir -p /stage/bin /stage/app \
-    && ln -s /opt/bull-board/node_modules/.bin/bull-board /stage/bin/bull-board
+WORKDIR /src
+ENV SKIP_INSTALL_SIMPLE_GIT_HOOKS=1
+COPY . .
+RUN corepack enable \
+    && yarn install --immutable \
+    && yarn workspaces foreach -Rt --from @bull-board/cli run build
 
 FROM node:22-alpine
 
@@ -16,9 +15,9 @@ ENV NODE_ENV=production \
     BULL_BOARD_HOST=0.0.0.0 \
     BULL_BOARD_OPEN=false
 
-COPY --from=deps /opt/bull-board/node_modules /opt/bull-board/node_modules
-COPY --from=deps /stage/bin/ /usr/local/bin/
-COPY --from=deps --chown=node:node /stage/app /app
+COPY --from=build /src /opt/bull-board
+RUN ln -s /opt/bull-board/packages/cli/dist/bin.js /usr/local/bin/bull-board \
+    && mkdir -p /app && chown node:node /app
 
 WORKDIR /app
 USER node

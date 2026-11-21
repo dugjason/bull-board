@@ -33,6 +33,8 @@ export interface ThroughputAreaChartProps {
    *  apart from a complete one and draw its closing segment dashed. Omit for series that
    *  aren't calendar buckets, e.g. the native 60-minute view's per-minute index. */
   granularity?: MetricsHistoryGranularity;
+  /** Hide the completed/failed swatches when the caller renders its own totals instead. */
+  showLegend?: boolean;
 }
 
 const compactNumber = (value: number): string => {
@@ -51,6 +53,7 @@ export const ThroughputAreaChart = ({
   showAxis = false,
   formatXTick,
   granularity,
+  showLegend = true,
 }: ThroughputAreaChartProps) => {
   const { t } = useTranslation();
   const completedGradientId = `${idPrefix}-completed`;
@@ -70,7 +73,7 @@ export const ThroughputAreaChart = ({
   // Static swatches, not toggles -- there is nothing to hide behind them, unlike the latency
   // legend's per-percentile buttons. Mirrors LatencyChart's legend position (below the stat
   // tiles, above the chart) so throughput and latency read as one consistent layout.
-  const legend = data.length > 0 && (
+  const legend = showLegend && data.length > 0 && (
     <div className={s.legend}>
       <span className={s.legendItem}>
         <span className={s.legendSwatch} style={{ backgroundColor: 'var(--status-completed)' }} />

@@ -255,6 +255,7 @@
     "HIDE": "Masquer les métriques",
     "EMPTY": "Aucune métrique collectée pour l'instant. Activez les métriques sur votre worker (ex. metrics: { maxDataPoints: MetricsTime.ONE_WEEK }) pour afficher le débit.",
     "RANGE_60M": "60 min",
+    "RANGE_24H": "24 h",
     "RANGE_7D": "7 j",
     "RANGE_30D": "30 j",
     "RANGE_90D": "90 j",

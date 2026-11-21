@@ -255,6 +255,7 @@
     "HIDE": "Ocultar métricas",
     "EMPTY": "Nenhuma métrica coletada ainda. Ative as métricas no seu worker (ex.: metrics: { maxDataPoints: MetricsTime.ONE_WEEK }) para ver a taxa de transferência.",
     "RANGE_60M": "60m",
+    "RANGE_24H": "24h",
     "RANGE_7D": "7d",
     "RANGE_30D": "30d",
     "RANGE_90D": "90d",

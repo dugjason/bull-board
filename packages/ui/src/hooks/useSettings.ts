@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { DEFAULT_LATENCY_SERIES, LatencySeriesKey } from '../components/LatencyChart/latencySeries';
+import type { VolumeRange } from '../components/QueueCard/QueueVolume/volumeRange';
 import { DEFAULT_JOB_TAB, JobTabPreference } from './useDetailsTabs';
 import { QueueSortKey, SortDirection } from './useSortQueues';
 import type { SchedulerSortKey } from './useSortSchedulers';
@@ -33,7 +34,7 @@ interface SettingsState {
     dashboard: { key: QueueSortKey; direction: SortDirection };
     schedulers: { key: SchedulerSortKey; direction: SortDirection };
   };
-  overview: { grouped?: boolean };
+  overview: { grouped?: boolean; volumeRange?: VolumeRange };
   sidebarCollapsed: boolean;
   /** One global preference for which latency-chart series are visible, shared by the queue
    *  detail page and the metrics history page rather than tracked per queue. */

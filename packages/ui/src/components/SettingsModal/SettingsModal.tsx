@@ -121,7 +121,9 @@ export const SettingsModal = ({ open, onClose }: SettingsModalProps) => {
           id="group-queues"
           description={t('SETTINGS.GROUP_QUEUES_HELP')}
           checked={overview.grouped ?? groupedDefault}
-          onCheckedChange={(checked) => setSettings({ overview: { grouped: checked } })}
+          onCheckedChange={(checked) =>
+            setSettings({ overview: { ...overview, grouped: checked } })
+          }
         />
         <SwitchField
           label={t('SETTINGS.SORT_QUEUES')}

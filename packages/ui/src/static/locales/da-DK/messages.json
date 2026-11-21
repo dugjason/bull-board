@@ -254,6 +254,7 @@
     "HIDE": "Skjul metrikker",
     "EMPTY": "Ingen målinger indsamlet endnu. Aktiver målinger på din worker (f.eks. metrics: { maxDataPoints: MetricsTime.ONE_WEEK }) for at se gennemløb.",
     "RANGE_60M": "60m",
+    "RANGE_24H": "24t",
     "RANGE_7D": "7d",
     "RANGE_30D": "30d",
     "RANGE_90D": "90d",

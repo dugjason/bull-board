@@ -253,6 +253,7 @@
     "HIDE": "メトリクスを非表示",
     "EMPTY": "メトリクスがまだ収集されていません。ワーカーでメトリクスを有効にしてください (例: metrics: { maxDataPoints: MetricsTime.ONE_WEEK })",
     "RANGE_60M": "60分",
+    "RANGE_24H": "24時間",
     "RANGE_7D": "7日",
     "RANGE_30D": "30日",
     "RANGE_90D": "90日",

@@ -254,6 +254,7 @@
     "HIDE": "Metriken ausblenden",
     "EMPTY": "Noch keine Metriken erfasst. Aktivieren Sie Metriken in Ihrem Worker (z. B. metrics: { maxDataPoints: MetricsTime.ONE_WEEK }), um den Durchsatz zu sehen.",
     "RANGE_60M": "60 Min.",
+    "RANGE_24H": "24 Std.",
     "RANGE_7D": "7 T",
     "RANGE_30D": "30 T",
     "RANGE_90D": "90 T",

@@ -252,6 +252,7 @@
     "HIDE": "隐藏指标",
     "EMPTY": "尚未收集指标。请在您的worker上启用指标（例如：metrics: { maxDataPoints: MetricsTime.ONE_WEEK }）以查看吞吐量。",
     "RANGE_60M": "60分钟",
+    "RANGE_24H": "24小时",
     "RANGE_7D": "7天",
     "RANGE_30D": "30天",
     "RANGE_90D": "90天",

@@ -253,6 +253,7 @@
     "HIDE": "Hide metrics",
     "EMPTY": "No metrics collected yet. Enable metrics on your worker (e.g. metrics: { maxDataPoints: MetricsTime.ONE_WEEK }) to see throughput.",
     "RANGE_60M": "60m",
+    "RANGE_24H": "24h",
     "RANGE_7D": "7d",
     "RANGE_30D": "30d",
     "RANGE_90D": "90d",
