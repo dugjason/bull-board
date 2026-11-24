@@ -533,5 +533,25 @@
       "LIMIT": "Maximale Läufe",
       "END_DATE": "Enddatum"
     }
+  },
+  "OVERVIEW_SUMMARY": {
+    "PROCESSED": "jobs processed · last {{range}}",
+    "CHANGE": "{{change}} vs previous {{range}}",
+    "AVG": "Avg",
+    "SUCCESS_RATE": "Success rate",
+    "PEAK": "Peak throughput",
+    "PER_HOUR_UNIT": "/h",
+    "PER_DAY_UNIT": "/day",
+    "LATENCY": "p95 run / wait",
+    "LATENCY_THIS_HOUR": "p95 run / wait (this hour)",
+    "P50_RUN": "p50 run {{value}}",
+    "OLDEST_WAITING": "Oldest waiting (peak)",
+    "ALL_QUEUES": "across all queues",
+    "BUSIEST": "Busiest queue",
+    "BUSIEST_SHARE": "Busiest queue · {{share}}%",
+    "PROCESSED_COUNT": "{{total}} processed",
+    "MOST_FAILURES": "Most failures",
+    "FAILED_COUNT": "{{total}} failed",
+    "NO_FAILURES": "No failures"
   }
 }

@@ -12,7 +12,7 @@ import {
   toNativeRows,
   toNativeSeries,
 } from '../../ThroughputAreaChart/throughputSeries';
-import { fillBuckets, HISTORY_RANGES, historyWindow } from './volumeRange';
+import { fillBuckets, formatHistoryBucket, HISTORY_RANGES, historyWindow } from './volumeRange';
 import type { HistoryVolumeRange } from './volumeRange';
 import s from './QueueVolume.module.css';
 
@@ -83,15 +83,7 @@ const HistoryVolume = ({ queueName, enabled, range }: HistoryVolumeProps) => {
       rows={hasData ? fillBuckets(toHistoryRows(completed, failed), from, spec) : null}
       loading={loading}
       granularity={spec.granularity}
-      formatTooltipLabel={(row) =>
-        spec.granularity === 'hour'
-          ? new Date(row.x).toLocaleString(undefined, {
-              month: 'short',
-              day: 'numeric',
-              hour: 'numeric',
-            })
-          : new Date(row.x).toLocaleDateString()
-      }
+      formatTooltipLabel={(row) => formatHistoryBucket(row.x, spec.granularity)}
     />
   );
 };

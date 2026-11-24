@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Loader } from '../../components/Loader/Loader';
 import { OverviewControls } from '../../components/OverviewControls/OverviewControls';
 import OverviewDropDownActions from '../../components/OverviewDropDownActions/OverviewDropDownActions';
+import { OverviewSummary } from '../../components/OverviewSummary/OverviewSummary';
 import { OverviewTree } from '../../components/OverviewTree/OverviewTree';
 import { QueueCard } from '../../components/QueueCard/QueueCard';
 import {
@@ -78,7 +79,9 @@ export const OverviewPage = () => {
                 ranges={VOLUME_RANGES}
                 value={overviewSettings.volumeRange ?? '60m'}
                 onChange={(range) =>
-                  setSettings({ overview: { ...overviewSettings, volumeRange: range } })
+                  setSettings({
+                    overview: { ...overviewSettings, volumeRange: range },
+                  })
                 }
                 getLabel={(range) => t(VOLUME_RANGE_LABEL_KEYS[range])}
               />
@@ -93,6 +96,7 @@ export const OverviewPage = () => {
           </div>
         </StatusLegend>
       </StickyHeader>
+      {queues && queues.length > 0 && <OverviewSummary queues={queues} />}
       {loading && !queues ? (
         <Loader />
       ) : filteredQueues.length === 0 ? (

@@ -56,3 +56,14 @@ export function fillBuckets(
     return byTs.get(x) ?? { x, completed: 0, failed: 0 };
   });
 }
+
+/** Tooltip and peak label for a history bucket: hour buckets show the hour, day buckets the date. */
+export function formatHistoryBucket(ts: number, granularity: MetricsHistoryGranularity): string {
+  return granularity === 'hour'
+    ? new Date(ts).toLocaleString(undefined, {
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+      })
+    : new Date(ts).toLocaleDateString();
+}
